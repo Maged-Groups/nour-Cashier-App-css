@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/glopal.css" />
+
+    <title>كاشير</title>
+  </head>
+  <body>
+    <header
+      class="bg-primary-dark shadow-lg flex flex-row items-center justify-between text-white py-2.5 px-5.5 font-cairo"
+    >
+      <div class="flex gap-2.5 items-center">
+        <div
+          class="bg-accent gap-2.5 rounded-xl flex text-primary-dark font-black items-center justify-center text-lg w-8.5 h-8.5"
+        >
+          ك
+        </div>
+        <div class="text-lg font-bold">كاشير البقالة</div>
+      </div>
+      <div class="flex p-1 gap-1.5 rounded-xl bg-glass">
+        <button
+          id="first"
+          class="py-2 px-4.5 rounded-lg font-semibold text-sm tab"
+          onclick="changeTabs(this)"
+        >
+          الكاشير
+        </button>
+        <button
+          id="scound"
+          class="py-2 px-4.5 rounded-lg font-semibold text-sm"
+          onclick="changeTabs(this)"
+        >
+          المخزون
+        </button>
+        <button
+          id="thered"
+          class="py-2 px-4.5 rounded-lg font-semibold text-sm"
+          onclick="changeTabs(this)"
+        >
+          التقارير
+        </button>
+      </div>
+      <div>20/8/2026 1:00م</div>
+    </header>
+    <div
+      class="pt-4.5 px-5.5 pb-10 my-0 mx-auto bg-bg flex gap-4.5 min-h-[100vh]"
+    >
+      <!-- right -->
+      <div class="flex-1 bg-surface rounded-lg shadow-lg p-4">
+        <div>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="ابحث بالاسم أو الكود..."
+            class="flex-1 py-3 px-3.5 border-[1.5px] rounded-lg text-[15px] gap-2.5 border-line w-full"
+          />
+        </div>
+        <div class="gap-2 mb-3.5 flex-wrap my-3.5">
+          <button
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent activeChip chip"
+            onclick="changeChips(this)"
+          >
+            الكل
+          </button>
+          <button
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip"
+            onclick="changeChips(this)"
+          >
+            مواد غذائية
+          </button>
+          <button
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip"
+            onclick="changeChips(this)"
+          >
+            مشروبات
+          </button>
+          <button
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip"
+            onclick="changeChips(this)"
+          >
+            مخبوزات
+          </button>
+          <button
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip"
+            onclick="changeChips(this)"
+          >
+            ألبان
+          </button>
+          <button
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip"
+            onclick="changeChips(this)"
+          >
+            خضار وفاكهة
+          </button>
+          <button
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip"
+            onclick="changeChips(this)"
+          >
+            منتجات منزلية
+          </button>
+        </div>
+        <div></div>
+      </div>
+      <!-- left -->
+      <div
+        class="w-95 bg-surface rounded-lg shadow-lg p-4 hidden lg:inline"
+      ></div>
+    </div>
+    <script>
+      const changeTabs = (tab) => {
+        const allButtons = document.querySelectorAll("header button");
+        allButtons.forEach((btn) => btn.classList.remove("tab"));
+        tab.classList.add("tab");
+      };
+      const changeChips = (chip) => {
+        const allChips = document.querySelectorAll(".chip");
+        allChips.forEach((btn) => btn.classList.remove("activeChip"));
+        chip.classList.add("activeChip");
+      };
+    </script>
+  </body>
+</html>
