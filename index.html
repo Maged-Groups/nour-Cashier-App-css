@@ -33,30 +33,32 @@
       <div class="flex p-1 gap-1.5 rounded-xl bg-glass cursor-pointer">
         <button
           id="first"
-          class="py-2 px-4.5 rounded-lg font-semibold text-sm tab cursor-pointer"
-          onclick="changeTabs(this)"
+          class="py-2 px-4.5 rounded-lg font-semibold text-sm tab"
+          onclick="changeTabs(first, casher)"
         >
           الكاشير
         </button>
         <button
           id="scound"
-          class="py-2 px-4.5 rounded-lg font-semibold text-sm cursor-pointer"
-          onclick="changeTabs(this)"
+          class="py-2 px-4.5 rounded-lg font-semibold text-sm"
+          onclick="changeTabs(scound, inventory)"
         >
           المخزون
         </button>
         <button
           id="thered"
-          class="py-2 px-4.5 rounded-lg font-semibold text-sm cursor-pointer"
-          onclick="changeTabs(this)"
+          class="py-2 px-4.5 rounded-lg font-semibold text-sm"
+          onclick="changeTabs(thered, repots)"
         >
           التقارير
         </button>
       </div>
-      <div>20/8/2026 1:00م</div>
+      <div id="time"></div>
     </header>
+    <!-- الكاشير -->
     <div
-      class="pt-4.5 px-5.5 pb-10 my-0 mx-auto h-max-auto bg-bg gap-4.5 flex flex-col lg:flex-row"
+      id="casher"
+      class="section pt-4.5 px-5.5 pb-10 my-0 mx-auto min-h-full bg-bg gap-4.5 flex flex-col lg:flex-row"
     >
       <!-- right -->
       <div class="flex-1 bg-surface rounded-lg shadow-lg p-4">
@@ -70,43 +72,43 @@
         </div>
         <div class="gap-2 mb-3.5 flex-wrap my-3.5 cursor-pointer">
           <button
-            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent activeChip chip cursor-pointer"
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent activeChip chip"
             onclick="changeChips(this)"
           >
             الكل
           </button>
           <button
-            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip cursor-pointer"
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip"
             onclick="changeChips(this)"
           >
             مواد غذائية
           </button>
           <button
-            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip cursor-pointer"
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip"
             onclick="changeChips(this)"
           >
             مشروبات
           </button>
           <button
-            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip cursor-pointer"
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip"
             onclick="changeChips(this)"
           >
             مخبوزات
           </button>
           <button
-            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip cursor-pointer"
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip"
             onclick="changeChips(this)"
           >
             ألبان
           </button>
           <button
-            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip cursor-pointer"
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip"
             onclick="changeChips(this)"
           >
             خضار وفاكهة
           </button>
           <button
-            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip cursor-pointer"
+            class="py-1.5 px-3.5 rounded-3xl bg-primary-tint text-primary-dark text-[13px] font-semibold border-[1.5px] border-transparent chip"
             onclick="changeChips(this)"
           >
             منتجات منزلية
@@ -150,17 +152,146 @@
         </div>
         <button
           disabled="true"
-          class="w-full p-3 bg-accent text-primary-dark rounded-xl font-cairo font-extrabold text-base mt-1 transition-[0.12s] disabled:bg-[#dfe4dc] disabled:text-[#93998f] cursor-not-allowed"
+          class="w-full p-3 bg-accent text-primary-dark rounded-xl font-cairo font-extrabold text-base mt-1 ease-[0.12s] disabled:bg-[#dfe4dc] disabled:text-[#93998f] cursor-not-allowed"
         >
           إتمام البيع وطباعة الفاتورة
         </button>
       </div>
     </div>
+    <!-- المخزون -->
+    <div
+      class="section hidden px-5.5 pt-4.5 pb-10 my-0 mx-auto bg-bg"
+      id="inventory"
+    >
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="m-0 text-xl">المخزون والمنتجات</h2>
+        <button
+          class="bg-primary text-white py-2.5 px-4.5 rounded-lg font-bold text-sm"
+        >
+          +إضافة منتج
+        </button>
+      </div>
+      <!-- table -->
+      <table class="w-full bg-surface rounded-xl overflow-hidden shadow-lg">
+        <thead>
+          <tr>
+            <th>المنتج</th>
+            <th>الكود</th>
+            <th>الفئة</th>
+            <th>السعر</th>
+            <th>الكمية</th>
+            <th>الحالة</th>
+            <th>إجراءات</th>
+          </tr>
+        </thead>
+        <tbody id="table"></tbody>
+      </table>
+    </div>
+    <!-- التقارير -->
+    <div
+      class="section hidden px-5.5 pt-4.5 pb-10 my-0 mx-auto bg-bg"
+      id="repots"
+    >
+      <h2 class="m-0 mb-4 text-xl">تقارير المبيعات</h2>
+      <div class="gap-2.5 flex items-center mb-4 flex-wrap">
+        <input
+          type="date"
+          class="py-2 bg-white px-3 border-[1.5px] border-line rounded-lg text-sm"
+        />
+        <span>إلى</span>
+        <input
+          type="date"
+          class="py-2 bg-white px-3 border-[1.5px] border-line rounded-lg text-sm"
+        />
+        <button
+          class="py-2 px-4 text-sm rounded-lg font-bold bg-primary text-white"
+        >
+          تطبيق
+        </button>
+        <button
+          class="py-2 px-4 text-sm rounded-lg font-bold bg-none text-primary-dark underline"
+        >
+          عرض الكل
+        </button>
+      </div>
+      <div class="flex flex-wrap gap-4 mb-5">
+        <div
+          class="min-w-45 flex-1 bg-surface rounded-xl shadow-lg py-4 px-4.5"
+        >
+          <div class="text-xs text-ink-soft font-bold mb-1.5">عدد الفواتير</div>
+          <div class="font-cairo font-extrabold text-2xl text-primary-dark">
+            1
+          </div>
+        </div>
+        <div
+          class="min-w-45 flex-1 bg-surface rounded-xl shadow-lg py-4 px-4.5"
+        >
+          <div class="text-xs text-ink-soft font-bold mb-1.5">
+            إجمالي المبيعات
+          </div>
+          <div class="font-cairo font-extrabold text-2xl text-primary-dark">
+            0.00ج.م
+          </div>
+        </div>
+        <div
+          class="min-w-45 flex-1 bg-surface rounded-xl shadow-lg py-4 px-4.5"
+        >
+          <div class="text-xs text-ink-soft font-bold mb-1.5">الأكثر مبيعا</div>
+          <div class="font-cairo font-extrabold text-2xl text-primary-dark">
+            أرز مصري 1 كجم
+          </div>
+        </div>
+      </div>
+      <table class="w-full bg-surface rounded-xl overflow-hidden shadow-lg">
+        <thead>
+          <tr>
+            <th>رقم الفاتورة</th>
+            <th>التاريخ والوقت</th>
+            <th>عدد العناصر</th>
+            <th>الإجمالي</th>
+            <th>إجراءات</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>INV-1787921455084</td>
+            <td>٢٨‏/٨‏/٢٠٢٦، ٣:٥٠:٥٥ م</td>
+            <td>2</td>
+            <td>97.00 ج.م</td>
+            <td>
+              <button class="text-xs font-bold py-1 px-2 text-primary-dark">
+                طباعة
+              </button>
+              <button class="text-xs font-bold py-1 px-2 text-primary-dark">
+                تصدير
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>INV-1787921455084</td>
+            <td>٢٨‏/٨‏/٢٠٢٦، ٣:٥٠:٥٥ م</td>
+            <td>2</td>
+            <td>97.00 ج.م</td>
+            <td>
+              <button class="text-xs font-bold py-1 px-2 text-primary-dark">
+                طباعة
+              </button>
+              <button class="text-xs font-bold py-1 px-2 text-primary-dark">
+                تصدير
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <script>
-      const changeTabs = (tab) => {
+      const changeTabs = (btn, sce) => {
         const allButtons = document.querySelectorAll("header button");
         allButtons.forEach((btn) => btn.classList.remove("tab"));
-        tab.classList.add("tab");
+        btn.classList.add("tab");
+        const allSections = document.querySelectorAll(".section");
+        allSections.forEach((btn) => btn.classList.add("hidden"));
+        sce.classList.remove("hidden");
       };
       const changeChips = (chip) => {
         const allChips = document.querySelectorAll(".chip");
@@ -171,7 +302,7 @@
       seed.forEach((pro) => {
         cards.innerHTML += `
           <div
-            class="border-[1.5px] w-38 rounded-xl border-line text-center py-3 px-2.5 transition-[0.12s] hover:border-primary hover:shadow-lg hover:-translate-y-0.5"
+            class="border-[1.5px] w-38 rounded-xl border-line text-center py-3 px-2.5 ease-[0.12s] hover:border-primary hover:shadow-lg hover:-translate-y-0.5"
           >
             <div class="font-bold text-base mb-1 min-h-9">${pro.name}</div>
             <div class="text-xs text-ink-soft mb-1.5">المتاح :${pro.stock}</div>
@@ -179,13 +310,47 @@
             ${pro.price} ج.م
             </div>
             <button
-              class="cursor-pointer mt-2 w-full p-2 bg-primary text-white rounded-lg font-bold text-xs"
+              class="mt-2 w-full p-2 bg-primary text-white rounded-lg font-bold text-xs"
             >
               اضافة للسلة
             </button>
           </div>
         `;
+        const low = pro.stock <= 5;
+
+        table.innerHTML += `
+          <tr>
+            <td>${pro.name || "-"}</td>
+            <td>${pro.code || "-"}</td>
+            <td>${pro.category || "-"}</td>
+            <td>${pro.price || "-"}ج.م</td>
+            <td>${pro.stock || "-"}</td>
+            <td>
+              <div class ="${low ? "low" : "ok"}">
+                ${low ? "منخفض" : "متوفر"}
+              </div>
+            </td>
+            <td>
+              <button class="text-primary-dark text-sm font-bold py-1 px-2">
+                تعديل
+              </button>
+              <button class="text-danger text-sm font-bold py-1 px-2">
+                حذف
+              </button>
+            </td>
+          </tr>
+        `;
       });
+
+      function updateClock() {
+        const now = new Date();
+        document.getElementById("time").textContent = now.toLocaleString(
+          "ar-EG",
+          { dateStyle: "medium", timeStyle: "short" },
+        );
+      }
+      updateClock();
+      setInterval(updateClock, 30000);
     </script>
   </body>
 </html>

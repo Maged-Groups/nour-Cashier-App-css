@@ -33,9 +33,27 @@ h3,
 .display {
   font-family: "Cairo", sans-serif;
 }
+button {
+  cursor: pointer;
+}
+th {
+  @apply bg-primary-tint text-primary-dark font-cairo font-bold text-sm py-2.5 px-4 text-right border-b-[1px] border-line;
+}
+td {
+  @apply text-sm py-2.5 px-4 text-right border-b-[1px] border-line;
+}
 .tab {
   @apply bg-accent text-primary-dark;
 }
 .activeChip {
   @apply bg-primary text-white;
+}
+.hidden {
+  display: none !important;
+}
+.low {
+  @apply bg-[#FBE7E4] text-danger py-1 px-2.5 rounded-[20px] text-xs font-bold flex justify-center items-center;
+}
+.ok {
+  @apply bg-[#e6f0ea] text-primary-dark py-1 px-2.5 rounded-[20px] text-xs font-bold flex justify-center items-center;
 }
